@@ -9,4 +9,5 @@ Console.WriteLine($"Day 2 Part 1: {dayTwo.Part1Score}");
 Console.WriteLine($"Day 2 Part 2: {dayTwo.Part2Score}");
 
 var dayThree = new DayThree("../../../day3input.txt");
-Console.WriteLine($"Day 3 Part 1: {dayThree.Answer}");
+Console.WriteLine($"Day 3 Part 1: {dayThree.Part1Answer}");
+Console.WriteLine($"Day 3 Part 2: {dayThree.Part2Answer}");
