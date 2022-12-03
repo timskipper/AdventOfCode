@@ -1,9 +1,12 @@
 ﻿using AdventOfCode;
 
 var dayOne = new DayOne("../../../day1input.txt");
-Console.WriteLine($"Elf with {dayOne.MostCalories} calories has the most.");
-Console.WriteLine($"Total of top 3 calories is {dayOne.TopThreeCalories}");
+Console.WriteLine($"Day 1 Part 1: {dayOne.MostCalories}");
+Console.WriteLine($"Day 1 Part 2: {dayOne.TopThreeCalories}");
 
 var dayTwo = new DayTwo("../../../day2input.txt");
-Console.WriteLine($"Part 1 score is {dayTwo.Part1Score}");
-Console.WriteLine($"Part 2 score is {dayTwo.Part2Score}");
+Console.WriteLine($"Day 2 Part 1: {dayTwo.Part1Score}");
+Console.WriteLine($"Day 2 Part 2: {dayTwo.Part2Score}");
+
+var dayThree = new DayThree("../../../day3input.txt");
+Console.WriteLine($"Day 3 Part 1: {dayThree.Answer}");
