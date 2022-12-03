@@ -34,6 +34,20 @@
         .OrderByDescending(x => x.Calories)
         .First()
         .Calories;
+
+    public int TopThreeCalories => data
+        .GroupBy(
+            elf => elf.Id,
+            elf => elf.Calories,
+            (elf, elves) => new
+            {
+                Id = elf,
+                Calories = elves.Sum()
+            }
+        )
+        .OrderByDescending(x => x.Calories)
+        .Take(3)
+        .Sum(x => x.Calories);
 }
 
 public class Elf
