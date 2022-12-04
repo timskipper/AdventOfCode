@@ -14,3 +14,4 @@ Console.WriteLine($"Day 3 Part 2: {dayThree.Part2Answer}");
 
 var dayFour = new DayFour("../../../day4input.txt");
 Console.WriteLine($"Day 4 Part 1: {dayFour.Part1Answer}");
+Console.WriteLine($"Day 4 Part 2: {dayFour.Part2Answer}");
