@@ -3,11 +3,14 @@
     public class DayFive
     {
         private string finalTopStack;
+        private string finalTopStackV2;
         private Dictionary<int, Stack<string>> stacks;
 
         public DayFive(string dataFile)
         {
             var input = File.ReadAllLines(dataFile);
+
+            // Part 1
             InitialiseStacks();
 
             foreach (var line in input)
@@ -20,14 +23,26 @@
                 MoveCrates(quantity, from, to);
             }
 
-            finalTopStack = string.Empty;
-            for (int i = 1; i <= 9; i++)
+            finalTopStack = GetTopRow(stacks);
+
+            // Part 2
+            InitialiseStacks();
+
+            foreach (var line in input)
             {
-                finalTopStack += stacks[i].Peek();
+                if (!line.StartsWith("move"))
+                {
+                    continue;
+                }
+                (var quantity, var from, var to) = ParseLine(line);
+                MoveCratesV2(quantity, from, to);
             }
+
+            finalTopStackV2 = GetTopRow(stacks);
         }
 
         public string Part1Answer => finalTopStack;
+        public string Part2Answer => finalTopStackV2;
 
         private void InitialiseStacks()
         {
@@ -58,6 +73,32 @@
                 var crate = stacks[from].Pop();
                 stacks[to].Push(crate);
             }
+        }
+
+        private void MoveCratesV2(int quantity, int from, int to)
+        {
+            var temp = new List<string>();
+
+            for (int i = 0; i < quantity; i++)
+            {
+                var crate = stacks[from].Pop();
+                temp.Add(crate);
+            }
+
+            for (int i = quantity - 1; i >= 0; i--)
+            {
+                stacks[to].Push(temp[i]);
+            }
+        }
+
+        private string GetTopRow(Dictionary<int, Stack<string>> stacks)
+        {
+            var row = string.Empty;
+            for (int i = 1; i <= 9; i++)
+            {
+                row += stacks[i].Peek();
+            }
+            return row;
         }
     }
 }
