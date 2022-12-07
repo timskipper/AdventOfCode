@@ -23,3 +23,7 @@ Console.WriteLine($"Day 5 Part 2: {dayFive.Part2Answer}");
 var daySix = new DaySix("../../../day6input.txt");
 Console.WriteLine($"Day 6 Part 1: {daySix.Part1Answer}");
 Console.WriteLine($"Day 6 Part 2: {daySix.Part2Answer}");
+
+var daySeven = new DaySeven("../../../day7input.txt");
+Console.WriteLine($"Day 7 Part 1: {daySeven.Part1Answer}");
+Console.WriteLine($"Day 7 Part 2: {daySeven.Part2Answer}");
