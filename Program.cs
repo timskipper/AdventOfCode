@@ -31,3 +31,10 @@ Console.WriteLine($"Day 7 Part 2: {daySeven.Part2Answer}");
 var dayEight = new DayEight("../../../day8input.txt");
 Console.WriteLine($"Day 8 Part 1: {dayEight.Part1Answer}");
 Console.WriteLine($"Day 8 Part 2: {dayEight.Part2Answer}");
+
+var dayNine = new DayNine("../../../day9input.txt");
+Console.WriteLine($"Day 9 Part 1: {dayNine.Part1Answer}");
+Console.WriteLine($"Day 9 Part 2: {dayNine.Part2Answer}");
+
+var dayTen = new DayTen("../../../day10input.txt");
+Console.WriteLine($"Day 10 Part 1: {dayTen.Part1Answer}");
