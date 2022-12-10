@@ -2,6 +2,7 @@
 #include "DayEight.h"
 #include "Timer.h"
 #include "DayNine.h"
+#include "dayTen.h"
 
 int main()
 {
@@ -18,4 +19,10 @@ int main()
 	timer.stop();
 	std::cout << "Day 9 Part 1: " << dayNine.p1_answer << std::endl;
 	std::cout << "Day 9 Part 2: " << dayNine.p2_answer << std::endl;
+
+	std::cout << std::endl;
+	timer.start();
+	DayTen dayTen(R"(C:\Users\Tim\source\repos\AdventOfCode\day10input.txt)");
+	timer.stop();
+	std::cout << "Day 10 Part 1: " << dayTen.p1_answer << std::endl;
 }

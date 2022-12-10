@@ -136,6 +136,7 @@
   <ItemGroup>
     <ClInclude Include="DayEight.h" />
     <ClInclude Include="DayNine.h" />
+    <ClInclude Include="dayTen.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>

@@ -15,7 +15,7 @@ class DayEight
 	std::vector<std::vector<int>> score;
 
 public:
-	int p1_answer;
+	size_t p1_answer;
 	int p2_answer;
 
 	explicit DayEight(const std::string& data_file)
@@ -48,7 +48,7 @@ public:
 	}
 
 private:
-	int part1_answer()
+	size_t part1_answer()
 	{
 		const auto visible = std::views::join(visibility);
 		const auto count = std::ranges::count(visible.begin(), visible.end(), true);

@@ -23,7 +23,7 @@ inline std::vector<std::string> read_all_lines(const std::string& filename)
 	return input;
 }
 
-inline std::vector<std::string> split(const std::string& input, char delimiter)
+inline std::vector<std::string> split(const std::string& input, const char delimiter)
 {
 	std::vector<std::string> output;
 	std::stringstream data(input);

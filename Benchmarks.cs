@@ -56,15 +56,15 @@ public class Benchmarks
     //    var x = new DayEight(@"C:\Users\Tim\source\repos\AdventOfCode\day8input.txt");
     //}
 
-    [Benchmark]
-    public void Run_DayNine()
-    {
-        var x = new DayNine(@"C:\Users\Tim\source\repos\AdventOfCode\day9input.txt");
-    }
-
     //[Benchmark]
-    //public void Run_DayTen()
+    //public void Run_DayNine()
     //{
-    //    var x = new DayTen(@"C:\Users\Tim\source\repos\AdventOfCode\day10input.txt");
+    //    var x = new DayNine(@"C:\Users\Tim\source\repos\AdventOfCode\day9input.txt");
     //}
+
+    [Benchmark]
+    public void Run_DayTen()
+    {
+        var x = new DayTen(@"C:\Users\Tim\source\repos\AdventOfCode\day10input.txt");
+    }
 }

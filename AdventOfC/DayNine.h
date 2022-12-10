@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <string>
 #include <vector>
-#include <ranges>
 
 #include "Utils.h"
 
@@ -14,8 +13,8 @@ class DayNine
 	std::tuple<int, int> tails[9];
 
 public:
-	int p1_answer;
-	int p2_answer;
+	size_t p1_answer;
+	size_t p2_answer;
 
 	explicit DayNine(const std::string& data_file)
 	{
@@ -28,8 +27,8 @@ public:
 
 		for (auto& line : lines)
 		{
-			std::vector<std::string> commands = split(line, ' ');
-			std::string direction = commands.at(0);
+			auto commands = split(line, ' ');
+			auto direction = commands.at(0);
 			int distance = std::stoi(commands.at(1));
 
 			if (direction == "L" || direction == "D")
@@ -77,10 +76,10 @@ private:
 		}
 	}
 
-	std::tuple<int, int> move_tail(std::tuple<int, int>& head_pos, int tail)
+	std::tuple<int, int> move_tail(const std::tuple<int, int>& head_pos, const int tail)
 	{
-		auto x_delta = std::get<0>(head_pos) - std::get<0>(tails[tail]);
-		auto y_delta = std::get<1>(head_pos) - std::get<1>(tails[tail]);
+		const auto x_delta = std::get<0>(head_pos) - std::get<0>(tails[tail]);
+		const auto y_delta = std::get<1>(head_pos) - std::get<1>(tails[tail]);
 
 		if (is_touching(head_pos, tails[tail]))
 		{
@@ -107,7 +106,7 @@ private:
 		return tails[tail];
 	}
 
-	bool is_touching(std::tuple<int, int> pos1, const std::tuple<int, int> pos2) const
+	bool is_touching(std::tuple<int, int> pos1, const std::tuple<int, int>& pos2) const
 	{
 		std::tuple<int, int> adjacent[9];
 		adjacent[0] = std::make_tuple(std::get<0>(pos1) - 1, std::get<1>(pos1) + 1);
