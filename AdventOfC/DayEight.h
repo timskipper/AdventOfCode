@@ -4,8 +4,9 @@
 #include <string>
 #include <vector>
 #include <ranges>
-#include <fstream>
 #include <ostream>
+
+#include "Utils.h"
 
 class DayEight
 {
@@ -60,24 +61,6 @@ private:
 		return max_value;
 	}
 
-	std::vector<std::string> read_all_lines(const std::string& filename)
-	{
-		std::vector<std::string> input;
-
-		std::ifstream file;
-		file.open(filename);
-
-		while (!file.eof())
-		{
-			std::string line;
-			getline(file, line);
-			input.push_back(line);
-		}
-
-		file.close();
-
-		return input;
-	}
 
 	void check_visibility()
 	{

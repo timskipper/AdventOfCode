@@ -2,15 +2,15 @@
 {
     public class DayNine
     {
-        private readonly HashSet<ValueTuple<int, int>> tailVisits;
-        private readonly HashSet<ValueTuple<int, int>> lastTailVisits;
+        private readonly List<ValueTuple<int, int>> tailVisits;
+        private readonly List<ValueTuple<int, int>> lastTailVisits;
 
         private readonly ValueTuple<int, int>[] Tails;
 
         public DayNine(string dataFile)
         {
-            tailVisits = new HashSet<ValueTuple<int, int>> { new ValueTuple<int, int>(0, 0) };
-            lastTailVisits = new HashSet<ValueTuple<int, int>> { new ValueTuple<int, int>(0, 0) };
+            tailVisits = new List<ValueTuple<int, int>> { new ValueTuple<int, int>(0, 0) };
+            lastTailVisits = new List<ValueTuple<int, int>> { new ValueTuple<int, int>(0, 0) };
             Tails = new (int, int)[9];
 
             var input = File.ReadAllLines(dataFile);
@@ -29,10 +29,13 @@
                 }
                 Move(direction, distance, ref head, 0);
             }
+
+            Part1Answer = tailVisits.Distinct().Count();
+            Part2Answer = lastTailVisits.Distinct().Count();
         }
 
-        public int Part1Answer => tailVisits.Distinct().Count();
-        public int Part2Answer => lastTailVisits.Distinct().Count();
+        public int Part1Answer { get; }
+        public int Part2Answer { get; }
 
         private void Move(string direction, int distance, ref ValueTuple<int, int> headPos, int tail)
         {
@@ -98,7 +101,7 @@
                 new(pos1.Item1, pos1.Item2 + 1),
                 new(pos1.Item1 + 1, pos1.Item2 + 1),
                 new(pos1.Item1 - 1, pos1.Item2 ),
-                new(pos1.Item1, pos1.Item2 ),
+                new(pos1.Item1, pos1.Item2),
                 new(pos1.Item1 + 1, pos1.Item2 ),
                 new(pos1.Item1 - 1, pos1.Item2 - 1),
                 new(pos1.Item1, pos1.Item2 - 1),
