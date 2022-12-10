@@ -1,6 +1,4 @@
-﻿using System.Transactions;
-
-namespace AdventOfCode
+﻿namespace AdventOfCode
 {
     public class DayEight
     {
@@ -35,10 +33,14 @@ namespace AdventOfCode
 
             CheckVisibility();
             CheckScore();
+
+            Part1Answer = visibility.Sum(row => row.Count(col => col));
+            Part2Answer = score.Aggregate(0, (current, row) => row.Prepend(current).Max());
         }
 
-        public int Part1Answer => visibility.Sum(row => row.Count(col => col));
-        public int Part2Answer => score.Aggregate(0, (current, row) => row.Prepend(current).Max());
+        public int Part1Answer { get; }
+
+        public int Part2Answer { get; }
 
         private void CheckVisibility()
         {

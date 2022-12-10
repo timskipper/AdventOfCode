@@ -1,4 +1,5 @@
 ﻿using AdventOfCode;
+using BenchmarkDotNet.Running;
 
 var dayOne = new DayOne("../../../day1input.txt");
 Console.WriteLine($"Day 1 Part 1: {dayOne.MostCalories}");
@@ -12,7 +13,7 @@ var dayThree = new DayThree("../../../day3input.txt");
 Console.WriteLine($"Day 3 Part 1: {dayThree.Part1Answer}");
 Console.WriteLine($"Day 3 Part 2: {dayThree.Part2Answer}");
 
-var dayFour = new DayFour("../../../day4input.txt");
+var dayFour = new DayFour("../../../day4input.txt"); 
 Console.WriteLine($"Day 4 Part 1: {dayFour.Part1Answer}");
 Console.WriteLine($"Day 4 Part 2: {dayFour.Part2Answer}");
 
@@ -38,3 +39,5 @@ Console.WriteLine($"Day 9 Part 2: {dayNine.Part2Answer}");
 
 var dayTen = new DayTen("../../../day10input.txt");
 Console.WriteLine($"Day 10 Part 1: {dayTen.Part1Answer}");
+
+BenchmarkRunner.Run<Benchmarks>();

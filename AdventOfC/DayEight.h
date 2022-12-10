@@ -14,6 +14,9 @@ class DayEight
 	std::vector<std::vector<int>> score;
 
 public:
+	int p1_answer;
+	int p2_answer;
+
 	explicit DayEight(const std::string& data_file)
 	{
 		const std::vector<std::string> lines = read_all_lines(data_file);
@@ -38,8 +41,12 @@ public:
 
 		check_visibility();
 		check_score();
+
+		p1_answer = part1_answer();
+		p2_answer = part2_answer();
 	}
 
+private:
 	int part1_answer()
 	{
 		const auto visible = std::views::join(visibility);
@@ -53,7 +60,6 @@ public:
 		return max_value;
 	}
 
-private:
 	std::vector<std::string> read_all_lines(const std::string& filename)
 	{
 		std::vector<std::string> input;
