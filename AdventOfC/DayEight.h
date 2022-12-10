@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <string>
 #include <vector>
+#include <ranges>
 #include <fstream>
 #include <ostream>
 
@@ -41,29 +42,15 @@ public:
 
 	int part1_answer()
 	{
-		auto result = 0;
-		for (auto row = visibility.begin(); row != visibility.end(); ++row)
-		{
-			for (auto col = row->begin(); col != row->end(); ++col)
-			{
-				if (*col)
-				{
-					result++;
-				}
-			}
-		}
-		return result;
+		const auto visible = std::views::join(visibility);
+		const auto count = std::ranges::count(visible.begin(), visible.end(), true);
+		return count;
 	}
 
 	int part2_answer()
 	{
-		std::vector<int> row_maximums;
-
-		for (auto row = score.begin(); row != score.end(); ++row)
-		{
-			row_maximums.push_back(*std::max_element(row->begin(), row->end()));
-		}
-		return *std::max_element(row_maximums.begin(), row_maximums.end());
+		const auto max_value = std::ranges::max(score | std::views::join);
+		return max_value;
 	}
 
 private:
@@ -92,7 +79,7 @@ private:
 		{
 			for (int x = 1; x < forest[y].size() - 1; x++)
 			{
-				int height = forest[y][x];
+				const int height = forest[y][x];
 
 				bool visible_from_left = true;
 				for (int i = 0; i < x; i++)
@@ -146,7 +133,7 @@ private:
 		{
 			for (auto x = 1; x < forest[y].size() - 1; x++)
 			{
-				auto height = forest[y][x];
+				const auto height = forest[y][x];
 
 				auto scoreToLeft = 0;
 				for (auto i = x - 1; i >= 0; i--)
