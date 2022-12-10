@@ -1,4 +1,4 @@
-﻿addx 2
+addx 2
 addx 3
 addx 1
 noop
