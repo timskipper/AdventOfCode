@@ -40,9 +40,11 @@
                     x += value;
                 }
             }
+
+            Part1Answer = signals[20] + signals[60] + signals[100] + signals[140] + signals[180] + signals[220];
         }
 
-        public int Part1Answer => signals[20] + signals[60] + signals[100] + signals[140] + signals[180] + signals[220];
+        public int Part1Answer { get; }
 
         private void RecordSignalStrength(int cycle, int ss)
         {
