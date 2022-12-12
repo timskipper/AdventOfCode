@@ -73,4 +73,10 @@ public class Benchmarks
     //{
     //    var x = new DayEleven(@"C:\Users\Tim\source\repos\AdventOfCode\day11input.txt");
     //}
+
+    [Benchmark]
+    public void Run_DayTwelve()
+    {
+        var x = new DayTwelve(@"C:\Users\Tim\source\repos\AdventOfCode\day12input.txt");
+    }
 }

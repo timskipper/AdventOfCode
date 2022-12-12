@@ -26,17 +26,22 @@ public class DayEleven
     public DayEleven(string dataFile)
     {
         var input = File.ReadAllLines(dataFile);
-        var monkeys = ParseNotes(input);
-        Monkey[] topTwoMonkeys;
 
+        var monkeys = ParseNotes(input);
         monkeys = DoMonkeys(monkeys, 20, 3);
-        topTwoMonkeys = monkeys.OrderByDescending(x => x.ItemsInspected).Take(2).ToArray();
-        Part1Answer = topTwoMonkeys[0].ItemsInspected * topTwoMonkeys[1].ItemsInspected;
+        Part1Answer = monkeys
+            .OrderByDescending(x => x.ItemsInspected)
+            .Take(2)
+            .Select(m => m.ItemsInspected)
+            .Aggregate((x, y) => x * y);
 
         monkeys = ParseNotes(input);
         monkeys = DoMonkeys(monkeys, 10000, 1);
-        topTwoMonkeys = monkeys.OrderByDescending(x => x.ItemsInspected).Take(2).ToArray();
-        Part2Answer = topTwoMonkeys[0].ItemsInspected * topTwoMonkeys[1].ItemsInspected;
+        Part2Answer = monkeys
+            .OrderByDescending(x => x.ItemsInspected)
+            .Take(2)
+            .Select(m => m.ItemsInspected)
+            .Aggregate((x, y) => x * y);
     }
 
     public long Part1Answer { get; }
@@ -44,6 +49,23 @@ public class DayEleven
 
     private List<Monkey> ParseNotes(string[] input)
     {
+        /*
+        File.ReadAllLines("input.txt")
+            .Chunk(7).ToList()
+            .ForEach(line =>
+            {
+                var startingItems = line[1].Trim().Replace("Starting items: ", "").Split(", ").Select(int.Parse)
+                    .ToList();
+                var operation = line[2].Trim().Replace("Operation: new = ", "");
+                var test = line[3].Trim().Replace("Test: divisible by ", "");
+                var ifTrue = int.Parse(line[4].Trim().Replace("If true: throw to monkey ", ""));
+                var ifFalse = int.Parse(line[5].Trim().Replace("If false: throw to monkey ", ""));
+
+                var monkey = new Monkey(operation, test, ifTrue, ifFalse, startingItems);
+                monkeys.Add(monkey);
+            });
+         */
+
         var monkeys = new List<Monkey> { new Monkey() };
         int monkeyIndex = 0;
         var throwLogic = (0, 0);
