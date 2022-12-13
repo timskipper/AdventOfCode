@@ -35,13 +35,15 @@ public class DayTwelve
             y++;
         }
 
-        Part1Answer = Solve(map, start, finish);
+        DisplayTrack(map);
+
+        Part1Answer = Solve_BFS(map, start, finish);
 
         const char startingElevation = 'a';
         var minSteps = (from position
                 in map
                         where position.Value == startingElevation
-                        select Solve(map, position.Key, finish)
+                        select Solve_BFS(map, position.Key, finish)
                 into steps
                         where steps != -1
                         select steps)
@@ -51,9 +53,23 @@ public class DayTwelve
     }
 
     public int Part1Answer { get; }
+
     public int Part2Answer { get; }
 
-    private static int Solve(Dictionary<ValueTuple<int, int>, int> map, ValueTuple<int, int> start, ValueTuple<int, int> finish)
+    public void DisplayTrack(Dictionary<ValueTuple<int, int>, int> map)
+    {
+        var maxSize = map.Max(x => x.Key);
+        for (var y = 0; y < maxSize.Item2; y++)
+        {
+            for (var x = 0; x < maxSize.Item1; x++)
+            {
+                Console.Write((char)map[(x, y)]);
+            }
+            Console.WriteLine();
+        }
+    }
+
+    private static int Solve_BFS(Dictionary<ValueTuple<int, int>, int> map, ValueTuple<int, int> start, ValueTuple<int, int> finish)
     {
         var queue = new Queue<ValueTuple<int, int>>();
         var visited = new List<(int, int)>();
@@ -72,7 +88,7 @@ public class DayTwelve
                 solved = true;
                 break;
             }
-            var validMoves = CanMove(map, visited, position);
+            var validMoves = GetValidMoves(map, visited, position);
             foreach (var move in validMoves)
             {
                 queue.Enqueue(move);
@@ -81,17 +97,18 @@ public class DayTwelve
             }
 
             nodesLeft--;
-            if (nodesLeft != 0) continue;
-
-            nodesLeft = nodeCount;
-            nodeCount = 0;
-            steps++;
+            if (nodesLeft == 0)
+            {
+                nodesLeft = nodeCount;
+                nodeCount = 0;
+                steps++;
+            }
         }
 
         return solved ? steps : -1;
     }
 
-    private static List<ValueTuple<int, int>> CanMove(Dictionary<ValueTuple<int, int>, int> map, ICollection<(int, int)> visited, ValueTuple<int, int> position)
+    private static List<ValueTuple<int, int>> GetValidMoves(Dictionary<ValueTuple<int, int>, int> map, ICollection<(int, int)> visited, ValueTuple<int, int> position)
     {
         var testPositions = new List<ValueTuple<int, int>>
         {
@@ -102,5 +119,24 @@ public class DayTwelve
         };
 
         return testPositions.Where(test => map.ContainsKey(test) && map[test] <= map[position] + 1 && !visited.Contains(test)).ToList();
+    }
+
+    private static Dictionary<(int, int), int> BuildTrack(Dictionary<ValueTuple<int, int>, int> map, List<ValueTuple<int, int>> track)
+    {
+        var result = new Dictionary<ValueTuple<int, int>, int>();
+
+        foreach (var node in map)
+        {
+            if (track.Contains(node.Key))
+            {
+                result.Add(node.Key, (char)'@');
+            }
+            else
+            {
+                result.Add(node.Key, node.Value);
+            }
+        }
+
+        return result;
     }
 }

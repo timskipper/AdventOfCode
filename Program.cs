@@ -1,4 +1,5 @@
-﻿using AdventOfCode;
+﻿using System.Runtime.CompilerServices;
+using AdventOfCode;
 using BenchmarkDotNet.Running;
 
 //var dayOne = new DayOne("../../../day1input.txt");
@@ -44,8 +45,12 @@ using BenchmarkDotNet.Running;
 //Console.WriteLine($"Day 11 Part 1: {dayEleven.Part1Answer}");
 //Console.WriteLine($"Day 11 Part 2: {dayEleven.Part2Answer}");
 
-var dayTwelve = new DayTwelve("../../../day12input.txt");
-Console.WriteLine($"Day 12 Part 1: {dayTwelve.Part1Answer}");
-Console.WriteLine($"Day 12 Part 2: {dayTwelve.Part2Answer}");
+//var dayTwelve = new DayTwelve("../../../day12input.txt");
+//Console.WriteLine($"Day 12 Part 1: {dayTwelve.Part1Answer}");
+//Console.WriteLine($"Day 12 Part 2: {dayTwelve.Part2Answer}");
+
+var dayThirteen = new DayThirteen("../../../day13exampleinput.txt");
+Console.WriteLine($"Day 13 Part 1: {dayThirteen.Part1Answer}");
+Console.WriteLine($"Day 13 Part 2: {dayThirteen.Part2Answer}");
 
 //BenchmarkRunner.Run<Benchmarks>();
