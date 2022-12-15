@@ -53,8 +53,12 @@ using BenchmarkDotNet.Running;
 //Console.WriteLine($"Day 13 Part 1: {dayThirteen.Part1Answer}");
 //Console.WriteLine($"Day 13 Part 2: {dayThirteen.Part2Answer}");
 
-var dayFourteen = new DayFourteen("../../../day14input.txt");
-Console.WriteLine($"Day 14 Part 1: {dayFourteen.Part1Answer}");
-Console.WriteLine($"Day 14 Part 2: {dayFourteen.Part2Answer}");
+//var dayFourteen = new DayFourteen("../../../day14exampleinput.txt");
+//Console.WriteLine($"Day 14 Part 1: {dayFourteen.Part1Answer}");
+//Console.WriteLine($"Day 14 Part 2: {dayFourteen.Part2Answer}");
+
+var dayFifteen = new DayFifteen("../../../day15input.txt");
+Console.WriteLine($"Day 15 Part 1: {dayFifteen.Part1Answer}");
+Console.WriteLine($"Day 15 Part 2: {dayFifteen.Part2Answer}");
 
 //BenchmarkRunner.Run<Benchmarks>();
