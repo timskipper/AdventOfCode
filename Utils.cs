@@ -2,6 +2,23 @@
 
 public static class Utils
 {
+    public static int Max(int x, int y)
+    {
+        return x > y ? x : y;
+    }
+    public static int Min(int x, int y)
+    {
+        return x < y ? x : y;
+    }
+    public static long Max(long x, long y)
+    {
+        return x > y ? x : y;
+    }
+    public static long Min(long x, long y)
+    {
+        return x < y ? x : y;
+    }
+
     public static IEnumerable<(long, long)> CircleScan(ValueTuple<long, long> centre, long radius, long ty)
     {
         const float a = 0.707107F;
@@ -58,5 +75,18 @@ public static class Utils
         }
 
         return result;
+    }
+}
+
+static class CircularLinkedList
+{
+    public static LinkedListNode<T> NextOrFirst<T>(this LinkedListNode<T> current)
+    {
+        return current.Next ?? current.List.First;
+    }
+
+    public static LinkedListNode<T> PreviousOrLast<T>(this LinkedListNode<T> current)
+    {
+        return current.Previous ?? current.List.Last;
     }
 }

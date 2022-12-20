@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode", "AdventOfCod
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AdventOfC", "AdventOfC\AdventOfC.vcxproj", "{D6BD4C10-C74B-4F97-A035-004ED56C535A}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "AdventOfPython", "AdventOfPython\AdventOfPython.pyproj", "{31D8D76A-B11E-4302-96FA-9021575512DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,12 @@ Global
 		{D6BD4C10-C74B-4F97-A035-004ED56C535A}.Release|x64.Build.0 = Release|x64
 		{D6BD4C10-C74B-4F97-A035-004ED56C535A}.Release|x86.ActiveCfg = Release|Win32
 		{D6BD4C10-C74B-4F97-A035-004ED56C535A}.Release|x86.Build.0 = Release|Win32
+		{31D8D76A-B11E-4302-96FA-9021575512DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31D8D76A-B11E-4302-96FA-9021575512DC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{31D8D76A-B11E-4302-96FA-9021575512DC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{31D8D76A-B11E-4302-96FA-9021575512DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31D8D76A-B11E-4302-96FA-9021575512DC}.Release|x64.ActiveCfg = Release|Any CPU
+		{31D8D76A-B11E-4302-96FA-9021575512DC}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

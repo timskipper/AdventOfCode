@@ -1,6 +1,7 @@
-﻿using System.Runtime.CompilerServices;
-using AdventOfCode;
+﻿using AdventOfCode;
 using BenchmarkDotNet.Running;
+
+//BenchmarkRunner.Run<Benchmarks>();
 
 //var dayOne = new DayOne("../../../day1input.txt");
 //Console.WriteLine($"Day 1 Part 1: {dayOne.MostCalories}");
@@ -57,8 +58,26 @@ using BenchmarkDotNet.Running;
 //Console.WriteLine($"Day 14 Part 1: {dayFourteen.Part1Answer}");
 //Console.WriteLine($"Day 14 Part 2: {dayFourteen.Part2Answer}");
 
-var dayFifteen = new DayFifteen("../../../day15input.txt");
-Console.WriteLine($"Day 15 Part 1: {dayFifteen.Part1Answer}");
-Console.WriteLine($"Day 15 Part 2: {dayFifteen.Part2Answer}");
+//var dayFifteen = new DayFifteen("../../../day15input.txt");
+//Console.WriteLine($"Day 15 Part 1: {dayFifteen.Part1Answer}");
+//Console.WriteLine($"Day 15 Part 2: {dayFifteen.Part2Answer}");
 
-//BenchmarkRunner.Run<Benchmarks>();
+//var daySixteen = new DaySixteen("../../../day16input.txt");
+//Console.WriteLine($"Day 16 Part 1: {daySixteen.Part1Answer}");
+//Console.WriteLine($"Day 16 Part 2: {daySixteen.Part2Answer}");
+
+//var daySeventeen = new DaySeventeen("../../../day17input.txt");
+//Console.WriteLine($"Day 17 Part 1: {daySeventeen.Part1Answer}");
+//Console.WriteLine($"Day 17 Part 2: {daySeventeen.Part2Answer}");
+
+//var dayEighteen = new DayEighteen("../../../day18input.txt");
+//Console.WriteLine($"Day 18 Part 1: {dayEighteen.Part1Answer}");
+//Console.WriteLine($"Day 18 Part 2: {dayEighteen.Part2Answer}");
+
+//var dayNineteen = new DayNineteen("../../../day19input.txt");
+//Console.WriteLine($"Day 19 Part 1: {dayNineteen.Part1Answer}");
+//Console.WriteLine($"Day 19 Part 2: {dayNineteen.Part2Answer}");
+
+var dayTwenty = new DayTwenty("../../../day20input.txt");
+Console.WriteLine($"Day 20 Part 1: {dayTwenty.Part1Answer}");
+Console.WriteLine($"Day 20 Part 2: {dayTwenty.Part2Answer}");
