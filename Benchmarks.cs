@@ -92,9 +92,27 @@ public class Benchmarks
     //    var x = new DayFourteen(@"C:\Users\Tim\source\repos\AdventOfCode\day14input.txt");
     //}
 
+    //[Benchmark]
+    //public void Run_DayFifteen()
+    //{
+    //    var x = new DayFifteen(@"C:\Users\Tim\source\repos\AdventOfCode\day15input.txt");
+    //}
+
+    //[Benchmark]
+    //public void Run_DaySixteen()
+    //{
+    //    var x = new DaySixteen(@"C:\Users\Tim\source\repos\AdventOfCode\day16input.txt");
+    //}
+
+    //[Benchmark]
+    //public void Run_DaySeventeen()
+    //{
+    //    var x = new DaySeventeen(@"C:\Users\Tim\source\repos\AdventOfCode\day17input.txt");
+    //}
+
     [Benchmark]
-    public void Run_DayFifteen()
+    public void Run_DayEighteen()
     {
-        var x = new DayFifteen(@"C:\Users\Tim\source\repos\AdventOfCode\day15input.txt");
+        var x = new DayEighteen(@"C:\Users\Tim\source\repos\AdventOfCode\day18input.txt");
     }
 }

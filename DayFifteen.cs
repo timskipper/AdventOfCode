@@ -1,5 +1,4 @@
 ﻿namespace AdventOfCode;
-
 public class DayFifteen
 {
     public DayFifteen(string dataFile)
