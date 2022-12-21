@@ -1,7 +1,4 @@
-﻿using Microsoft.Diagnostics.Runtime.Utilities;
-using Perfolizer.Mathematics.QuantileEstimators;
-
-namespace AdventOfCode;
+﻿namespace AdventOfCode;
 
 public class DayTwenty
 {

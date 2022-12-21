@@ -78,6 +78,10 @@ using BenchmarkDotNet.Running;
 //Console.WriteLine($"Day 19 Part 1: {dayNineteen.Part1Answer}");
 //Console.WriteLine($"Day 19 Part 2: {dayNineteen.Part2Answer}");
 
-var dayTwenty = new DayTwenty("../../../day20input.txt");
-Console.WriteLine($"Day 20 Part 1: {dayTwenty.Part1Answer}");
-Console.WriteLine($"Day 20 Part 2: {dayTwenty.Part2Answer}");
+//var dayTwenty = new DayTwenty("../../../day20input.txt");
+//Console.WriteLine($"Day 20 Part 1: {dayTwenty.Part1Answer}");
+//Console.WriteLine($"Day 20 Part 2: {dayTwenty.Part2Answer}");
+
+var dayTwentyOne = new DayTwentyOne("../../../day21exampleinput.txt");
+Console.WriteLine($"Day 21 Part 1: {dayTwentyOne.Part1Answer}");
+Console.WriteLine($"Day 21 Part 2: {dayTwentyOne.Part2Answer}");
