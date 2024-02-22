@@ -3,62 +3,101 @@
 public class DayTwentyOne
 {
     private readonly string dataFile;
-    private Queue<(string monkey, long number)> yellers;
-    private Dictionary<string, long> yelled;
+    private Dictionary<string, long> yellers;
     private Dictionary<string, (string left, string operation, string right)> operations;
 
     public DayTwentyOne(string dataFile)
     {
         this.dataFile = dataFile;
-    }
 
-    public long Part1Answer
-    {
-        get
+        ParseInput();
+
+        long? answer = null;
+        while (answer is null)
         {
-            ParseInput();
+            var calculations = JibberJabber(yellers, operations, false);
+            if (!calculations.Any())
+            {
+                continue;
+            }
+            if (calculations.ContainsKey("root"))
+            {
+                answer = calculations["root"];
+            }
+            else
+            {
+                foreach (var c in calculations.Where(c => !yellers.ContainsKey(c.Key)))
+                {
+                    yellers.Add(c.Key, c.Value);
+                    operations.Remove(c.Key);
+                }
+            }
+        }
 
-            long? answer = null;
+        Part1Answer = (long)answer;
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        var allYellers = new Dictionary<string, long>(yellers);
+
+        ParseInput();
+
+        answer = null;
+        yellers = new Dictionary<string, long>(allYellers);
+        var originalOps = new Dictionary<string, (string left, string operation, string right)>(operations);
+
+        long breakAt = 302;//long.MaxValue;
+        long processed = 0;
+        //Parallel.For(301, breakAt, (humanNumber, state) =>
+        for (var humanNumber = 300; humanNumber < breakAt; humanNumber++)
+        {
+            processed++;
+            if (processed % 92233720368547700 == 0)
+            {
+                Console.WriteLine($"Processing... {processed} {(processed / long.MaxValue) * 100}");
+            }
+
+            //if (humanNumber == breakAt)
+            //{
+            //    state.Break();
+            //}
+
+            yellers["humn"] = humanNumber;
+
             while (answer is null)
             {
-                if (yellers.Any())
-                {
-                    var y = yellers.Dequeue();
-                    yelled.Add(y.monkey, y.number);
-                }
-
-                if (yelled.Count < 2) continue;
-
-                var calculations = JibberJabber(yelled, operations, false);
+                var calculations = JibberJabber(yellers, operations, true);
                 if (!calculations.Any())
                 {
                     continue;
                 }
+
                 if (calculations.ContainsKey("root"))
                 {
-                    answer = calculations["root"];
-                }
-                else
-                {
-                    foreach (var c in calculations.Where(c => !yelled.ContainsKey(c.Key)))
+                    if (calculations["root"] == -1)
                     {
-                        yelled.Add(c.Key, c.Value);
-                        operations.Remove(c.Key);
+                        answer = yellers["humn"];
+                        Part2Answer = (long)answer;
+                        //state.Break();
+                        return;
                     }
+
+                    operations = new Dictionary<string, (string left, string operation, string right)>(originalOps);
+                    break;
+                }
+
+                foreach (var c in calculations.Where(c => !yellers.ContainsKey(c.Key)))
+                {
+                    yellers.Add(c.Key, c.Value);
+                    operations.Remove(c.Key);
                 }
             }
-
-            return (long)answer;
         }
+        //});
     }
 
-    public long Part2Answer
-    {
-        get
-        {
-            return 0L;
-        }
-    }
+    public long Part1Answer { get; set; }
+    public long Part2Answer { get; set; }
 
     private Dictionary<string, long> JibberJabber(Dictionary<string, long> yelled,
         Dictionary<string, (string left, string operation, string right)> operations,
@@ -72,14 +111,19 @@ public class DayTwentyOne
             var left = yelled[op.Value.left];
             var right = yelled[op.Value.right];
             var operation = op.Value.operation;
-
-            if (isPart2 && op.Key == "root" && left == right)
-            {
-                calcs.Add(op.Key, -1);
-                return calcs;
-            }
             calcs.Add(op.Key, calculate(left, operation, right));
         }
+
+        if (isPart2)
+        {
+            var rootOp = operations.SingleOrDefault(x => x.Key == "root");
+            if (yelled[rootOp.Value.left] == yelled[rootOp.Value.right])
+            {
+                calcs.Add(rootOp.Key, -1);
+                return calcs;
+            }
+        }
+
         return calcs;
     }
 
@@ -102,8 +146,7 @@ public class DayTwentyOne
 
     private void ParseInput()
     {
-        yellers = new Queue<(string monkey, long number)>();
-        yelled = new Dictionary<string, long>();
+        yellers = new Dictionary<string, long>();
         operations = new Dictionary<string, (string left, string operation, string right)>();
 
         File.ReadAllLines(dataFile)
@@ -113,7 +156,7 @@ public class DayTwentyOne
                 var monkey = line.Substring(0, 4);
                 if (int.TryParse(line.Substring(6, line.Length - 6), out var number))
                 {
-                    yellers.Enqueue((monkey, number));
+                    yellers.Add(monkey, number);
                 }
                 else
                 {
